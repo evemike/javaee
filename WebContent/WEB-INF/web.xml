@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_9" version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+
+    <display-name>java ee study!</display-name>
+	
+	<!-- 指定过滤器 -->
+    <filter>
+    		<!-- 定义过滤器的名字：struts2 -->
+        <filter-name>struts2</filter-name>
+        <!-- 过滤器对应的类 该类位于Java Resources -> Libraries -> struts2-core-2.3.31.jar ->org.apache.struts2.dispatcher.ng.filter -> StrutsPrepareAndExecuteFilter  -->
+        <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+    </filter>
+	
+	<!-- 为过滤器指定路由 -->
+    <filter-mapping>
+    		<!-- 指定过滤器名称：struts2 -->
+        <filter-name>struts2</filter-name>
+        <!-- 路由规则 /* 代表全部 -->
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
+
+</web-app>

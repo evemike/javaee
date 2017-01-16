@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<!-- 开发模式 - ture -->
+	<constant name="struts.devMode" value="true" />
+	<package name="default" namespace="/" extends="struts-default">
+		<!-- 指定默认action -->
+		<default-action-ref name="index" />
+		<!-- 配置indexAction -->
+		<action name="index">
+			<result>/jsp/index.jsp</result>
+		</action>
+	</package>
+
+	<package name="teacher" namespace="/teacher" extends="default">
+
+		<!-- 指定默认action -->
+		<default-action-ref name="index" />
+
+		<!-- 列表 -->
+		<action name="index" class="com.mengyunzhi.javaee.action.teacher.Index">
+			<result name="success">/jsp/teacher/index.jsp</result>
+		</action>
+
+		<!-- 增加数据 -->
+		<action name="add">
+			<!-- 设置V层，相对于WebContent的绝对路径 -->
+			<result>/jsp/teacher/add.jsp</result>
+		</action>
+
+		<!-- 保存数据 -->
+		<action name="save" class="com.mengyunzhi.javaee.action.teacher.Save">
+			<!-- 设置V层，相对于WebContent的绝对路径 -->
+			<result name="success">/jsp/success.jsp</result>
+			<result name="error">/jsp/error.jsp</result>
+		</action>
+		
+		<!-- 编辑数据 -->
+		<action name="edit" class="com.mengyunzhi.javaee.action.teacher.Edit">
+			<result name="success">/jsp/teacher/edit.jsp</result>
+			<result name="error">/jsp/error.jsp</result>
+		</action>
+		
+		<!-- 更新数据 -->
+		<action name="update" class="com.mengyunzhi.javaee.action.teacher.Update">
+			<result name="success">/jsp/success.jsp</result>
+			<result name="error">/jsp/error.jsp</result>
+		</action>
+		
+		<!-- 删除 -->
+		<action name="delete" class="com.mengyunzhi.javaee.action.teacher.Delete">
+			<result name="success">/jsp/success.jsp</result>
+			<result name="error">/jsp/error.jsp</result>
+		</action>
+	</package>
+
+</struts>
+
+
+

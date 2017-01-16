@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<!-- hibernate配置信息 -->
+<hibernate-configuration>
+	<!-- session 工厂配置信息 -->
+	<session-factory>
+		<!-- 数据库连接区动, 位于资源库中的com.mysql.jdbc.Driver -->
+		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+		<!-- 数据库连接信息jdbc:数据库类型://地址/数据库名 -->
+		<property name="connection.url">jdbc:mysql://localhost/javaee</property>
+		<!-- 用户名 -->
+		<property name="connection.username">root</property>
+		<!-- 密码 -->
+		<property name="connection.password"></property>
+		<!-- 编码格式 -->
+		<property name="connection.characterEncoding">utf-8</property> 
+		
+		<!-- SQL 方言（不同的数据库除实现了标准的SQL外，还有一些自己的特性） -->
+		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+		
+		<!-- 启用hibernate自动session上下文管理（现在不需要理解）-->
+		<property name="current_session_context_class">thread</property>
+		
+		<!-- hibernate mapping to db define language auto create -->
+		<!-- validate：只验证;create:每次都自动创建新表， update：自动更新表结构.create-drop:随sessionFactory的关闭删除  -->
+		<property name="hbm2ddl.auto">update</property>
+		<!-- 是否在控制台打印sql语句 -->
+		<property name="show_sql">true</property>
+		<!-- 加载entity.Teacher实体类映射文件 -->
+		<mapping class="com.mengyunzhi.javaee.entity.Teacher" />
+	</session-factory>
+
+</hibernate-configuration>
