@@ -35,6 +35,7 @@
 			<!-- 设置V层，相对于WebContent的绝对路径 -->
 			<result name="success">/jsp/success.jsp</result>
 			<result name="error">/jsp/error.jsp</result>
+			<result name="input">/jsp/teacher/add.jsp</result>
 		</action>
 		
 		<!-- 编辑数据 -->

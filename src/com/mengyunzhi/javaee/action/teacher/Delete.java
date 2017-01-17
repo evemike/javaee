@@ -1,8 +1,14 @@
 package com.mengyunzhi.javaee.action.teacher;
 
 import com.mengyunzhi.javaee.server.TeacherServer;
+import com.opensymphony.xwork2.ActionSupport;
 
-public class Delete {
+public class Delete extends ActionSupport {
+
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
     private int id;
 
     public int getId() {

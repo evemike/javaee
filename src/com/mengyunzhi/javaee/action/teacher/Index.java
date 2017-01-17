@@ -3,8 +3,14 @@ package com.mengyunzhi.javaee.action.teacher;
 import java.util.List;
 
 import com.mengyunzhi.javaee.entity.Teacher;
+import com.opensymphony.xwork2.ActionSupport;
 
-public class Index {
+public class Index extends ActionSupport{
+    /**
+     * 定义serialVersionUID,增强兼容性
+     */
+    private static final long serialVersionUID = 1L;
+
     // 教师列表 类型为List，每项均为Teacher。
     private List<Teacher> teachers;
     
@@ -61,6 +67,6 @@ public class Index {
         } else {
             teachers = Teacher.paginate(name, page, pageSize);
         }
-        return "success";
+        return SUCCESS;
     }
 }

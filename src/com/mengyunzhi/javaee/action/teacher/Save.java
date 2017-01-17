@@ -1,5 +1,7 @@
 package com.mengyunzhi.javaee.action.teacher;
 
+import java.util.Collection;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -8,8 +10,15 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
 
+import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.validator.annotations.RequiredStringValidator;
+import com.opensymphony.xwork2.validator.annotations.StringLengthFieldValidator;
 
-public class Save {
+public class Save extends ActionSupport {
+    /**
+     * 创建时间：2017.1.16
+     */
+    private static final long serialVersionUID = 1L;
     private String username;
     private String password;
     private String sex;
@@ -19,7 +28,14 @@ public class Save {
     public String getUsername() {
         return username;
     }
-
+    
+    @RequiredStringValidator(
+            message="用户名不能为空")
+    @StringLengthFieldValidator(
+            minLength="4", 
+            maxLength="8", 
+            trim=true, 
+            message="用户名必须介于4-8之间")
     public void setUsername(String username) {
         this.username = username;
     }
@@ -43,7 +59,13 @@ public class Save {
     public String getName() {
         return name;
     }
-
+    
+    @RequiredStringValidator(
+            message="姓名不能为空")
+    @StringLengthFieldValidator(
+            minLength="2", 
+            trim=true, 
+            message="姓名不能少于2位")
     public void setName(String name) {
         this.name = name;
     }
@@ -81,20 +103,20 @@ public class Save {
             teacher.setUsername(username);
             teacher.setEmail(email);
             teacher.setPassword(password);
-            
+
             // 由于sex的类型是String对象，所以需要使用equals()来判等
             if (sex.equals("0")) {
                 teacher.setSex(false);
             } else {
                 teacher.setSex(true);
             }
-            
+
             session.save(teacher);
 
             // 提交事务
             transaction.commit();
-            
-        // 捕获异常
+
+            // 捕获异常
         } catch (HibernateException e) {
 
         } finally {
@@ -104,7 +126,7 @@ public class Save {
                 session.close();
             }
         }
-
-        return "success"; // 返回字符串success
+        
+        return SUCCESS;
     }
 }
