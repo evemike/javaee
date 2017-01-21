@@ -1,6 +1,8 @@
 package com.mengyunzhi.javaee.action.teacher;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.mengyunzhi.javaee.entity.Teacher;
 import com.opensymphony.xwork2.ActionSupport;
@@ -13,7 +15,7 @@ public class Index extends ActionSupport{
 
     // 教师列表 类型为List，每项均为Teacher。
     private List<Teacher> teachers;
-    
+    private Map map = new HashMap();
     // 当前页
     private int page = 1;
     // 每页大小
@@ -26,6 +28,17 @@ public class Index extends ActionSupport{
         return page;
     }
     
+
+    public Map getMap() {
+        return map;
+    }
+
+
+    public void setMap(Map map) {
+        this.map = map;
+    }
+
+
     // 接收请求的page信息
     public void setPage(int page) {
         this.page = page;
@@ -53,6 +66,7 @@ public class Index extends ActionSupport{
 
     // V层在展示数据teachers的时候，将自动调用该方法
     public List<Teacher> getTeachers() {
+        ArrayList
         return teachers;
     }
 

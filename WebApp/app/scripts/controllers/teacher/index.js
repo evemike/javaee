@@ -8,10 +8,6 @@
  * Controller of the webAppApp
  */
 angular.module('webAppApp')
-  .controller('TeacherIndexCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('TeacherIndexCtrl', function ($scope, teacher) {
+        $scope.teachers = teacher.all();
   });

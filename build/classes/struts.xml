@@ -14,7 +14,7 @@
 		</action>
 	</package>
 
-	<package name="teacher" namespace="/teacher" extends="default">
+	<package name="teacher" namespace="/teacher" extends="json-default">
 
 		<!-- 指定默认action -->
 		<default-action-ref name="index" />
@@ -22,6 +22,7 @@
 		<!-- 列表 -->
 		<action name="index" class="com.mengyunzhi.javaee.action.teacher.Index">
 			<result name="success">/jsp/teacher/index.jsp</result>
+			<result type="json" />
 		</action>
 
 		<!-- 增加数据 -->
@@ -37,19 +38,19 @@
 			<result name="error">/jsp/error.jsp</result>
 			<result name="input">/jsp/teacher/add.jsp</result>
 		</action>
-		
+
 		<!-- 编辑数据 -->
 		<action name="edit" class="com.mengyunzhi.javaee.action.teacher.Edit">
 			<result name="success">/jsp/teacher/edit.jsp</result>
 			<result name="error">/jsp/error.jsp</result>
 		</action>
-		
+
 		<!-- 更新数据 -->
 		<action name="update" class="com.mengyunzhi.javaee.action.teacher.Update">
 			<result name="success">/jsp/success.jsp</result>
 			<result name="error">/jsp/error.jsp</result>
 		</action>
-		
+
 		<!-- 删除 -->
 		<action name="delete" class="com.mengyunzhi.javaee.action.teacher.Delete">
 			<result name="success">/jsp/success.jsp</result>
