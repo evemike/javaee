@@ -87,14 +87,6 @@ public class Teacher {
         this.password = password;
     }
 
-    // 输出性别
-    public String getSexAttr() {
-        if (sex) {
-            return "0男";
-        } else {
-            return "1女";
-        }
-    }
 
     public Teacher() {
 

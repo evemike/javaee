@@ -1,3 +1,10 @@
+<input type="text" ng-model="name" />
+<button type="button" ng-click="query()">确定</button>
+<select ng-change="query()" ng-model="pageSize">
+    <option ng-value="2">2</option>
+    <option ng-value="3">3</option>
+    <option ng-value="4">4</option>
+</select>
 <table class="table">
     <tr>
         <th>序号</th>
@@ -14,3 +21,19 @@
         <td>{{teacher.email}}</td>
     </tr>
 </table>
+<nav class="text-center">
+    <ul class="pagination">
+        <li class="{{activeClass(1)}}">
+            <a ng-click="changePage(1)" href="javascript:void(0);">1</a>
+        </li>
+        <li class="{{activeClass(2)}}">
+            <a ng-click="changePage(2)" href="javascript:void(0);">2</a>
+        </li>
+    </ul>
+</nav>
+<div class="debug">
+    {{name}}
+    <br /> {{page}}
+    <br /> {{pageSize}}
+    <br /> {{teachers}}
+</div>

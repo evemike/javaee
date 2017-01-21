@@ -1,13 +1,15 @@
 package com.mengyunzhi.javaee.action.teacher;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.struts2.interceptor.ServletResponseAware;
 
 import com.mengyunzhi.javaee.entity.Teacher;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class Index extends ActionSupport{
+public class Index extends ActionSupport implements ServletResponseAware{
     /**
      * 定义serialVersionUID,增强兼容性
      */
@@ -15,7 +17,6 @@ public class Index extends ActionSupport{
 
     // 教师列表 类型为List，每项均为Teacher。
     private List<Teacher> teachers;
-    private Map map = new HashMap();
     // 当前页
     private int page = 1;
     // 每页大小
@@ -27,17 +28,6 @@ public class Index extends ActionSupport{
     public int getPage() {
         return page;
     }
-    
-
-    public Map getMap() {
-        return map;
-    }
-
-
-    public void setMap(Map map) {
-        this.map = map;
-    }
-
 
     // 接收请求的page信息
     public void setPage(int page) {
@@ -66,8 +56,7 @@ public class Index extends ActionSupport{
 
     // V层在展示数据teachers的时候，将自动调用该方法
     public List<Teacher> getTeachers() {
-        ArrayList
-        return teachers;
+       return teachers;
     }
 
     // 该execute方法将被自动调用， 方法的返回类型必须为String
@@ -82,5 +71,14 @@ public class Index extends ActionSupport{
             teachers = Teacher.paginate(name, page, pageSize);
         }
         return SUCCESS;
+    }
+
+    @Override
+    public void setServletResponse(HttpServletResponse response) {
+        // 设置发送文件头:允许跨域的地址
+        response.setHeader("Access-Control-Allow-Origin", "*");
+        response.setHeader("Access-Control-Allow-Credentials", "true");
+        response.setHeader("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
+        response.setHeader("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers");
     }
 }

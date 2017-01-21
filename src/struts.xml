@@ -14,6 +14,7 @@
 		</action>
 	</package>
 
+	<!-- 继承自json-default. json-default是json插件为我们提供的 -->
 	<package name="teacher" namespace="/teacher" extends="json-default">
 
 		<!-- 指定默认action -->
@@ -21,8 +22,14 @@
 
 		<!-- 列表 -->
 		<action name="index" class="com.mengyunzhi.javaee.action.teacher.Index">
-			<result name="success">/jsp/teacher/index.jsp</result>
-			<result type="json" />
+			<!-- 返回类型设置为json -->
+			<result name="success" type="json">
+			</result>
+			<!-- 配置拦截器,使传入的json数据能够成功的通过setXXX()方法来传值 -->
+			<interceptor-ref name="defaultStack" />
+			<interceptor-ref name="json">
+				<param name="enableSMD">true</param>
+			</interceptor-ref>
 		</action>
 
 		<!-- 增加数据 -->

@@ -18,7 +18,7 @@ describe('Controller: TeacherIndexCtrl', function() {
     }));
 
     it('测试M层的静态数据', function() {
-        expect(scope.teachers.length).toBe(2);
-        expect(scope.teachers[0].username).toBe('zhangsan');
+        // expect(scope.teachers.length).toBe(2);
+        // expect(scope.teachers[0].username).toBe('zhangsan');
     });
 });

@@ -1,6 +1,5 @@
 package com.mengyunzhi.javaee.action.teacher;
 
-import java.util.Collection;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
