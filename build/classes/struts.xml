@@ -4,7 +4,7 @@
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
 	<!-- 开发模式 - ture -->
-	<constant name="struts.devMode" value="true" />
+	<constant name="struts.devMode" value="false" />
 	<package name="default" namespace="/" extends="struts-default">
 		<!-- 指定默认action -->
 		<default-action-ref name="index" />
@@ -14,6 +14,13 @@
 		</action>
 	</package>
 
+	<package name="test" namespace="/test" extends="struts-default">
+		<default-action-ref name="index" />
+		<action name="index" class="com.mengyunzhi.javaee.action.TeacherAction" method="index">
+			<result name="success">/jsp/success.jsp</result>
+		</action>
+	</package>
+	
 	<!-- 继承自json-default. json-default是json插件为我们提供的 -->
 	<package name="teacher" namespace="/teacher" extends="json-default">
 
@@ -21,7 +28,7 @@
 		<default-action-ref name="index" />
 
 		<!-- 列表 -->
-		<action name="index" class="com.mengyunzhi.javaee.action.teacher.Index">
+		<action name="index" class="com.mengyunzhi.javaee.action.TeacherAction" method="index">
 			<!-- 返回类型设置为json -->
 			<result name="success" type="json">
 			</result>
