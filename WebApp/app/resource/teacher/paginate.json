@@ -1,0 +1,5 @@
+{
+    "teachers":[
+        {"username":"zhangsan", "name":"张三", "sex":0,"email":"zhangsan@yunzhiclub.com"},
+        {"username":"lisi", "name":"李四", "sex":1,"email":"lisi@yunzhiclub.com"}]
+}

@@ -13,8 +13,8 @@ describe('Service: teacher', function() {
         $httpBackend = _$httpBackend_;
 
         // 定义请求 URL
-        var url = 'resource/teacher/index/all.json';
-        // 定义返回数据。注意此处的json数据的写法与xxx.json文件中的json数据的写的法的异同。
+        var url = 'http://127.0.0.1:8080/javaee/teacher/';
+        // 定义返回数据。
         var data = {
             teachers: [
                 { username: 'zhangsan', name: '张三', sex: 0, email: 'zhangsan@yunzhiclub.com' },
@@ -23,7 +23,7 @@ describe('Service: teacher', function() {
         };
 
         // 进行模似数据请求配置.当请求方法为GET，资源名为resource/teacher/index/all.json, 返回data数据.
-        $httpBackend.when('GET', url).respond(data);
+        $httpBackend.when('POST', url).respond(data);
     }));
 
     it('should do something', function() {
@@ -31,11 +31,14 @@ describe('Service: teacher', function() {
     });
 
     it('应该取出来所有的教师数据', function() {
-        teacher.all(function(teachers){
+
+        teacher.paginate('zhangsan', 1, 2, function(teachers) {
+            console.log('返回教师信息如下：');
+            console.log(teachers);
             expect(teachers.length).toBe(2);
         });
-
         // 模拟数据请求
         $httpBackend.flush();
+        
     });
 });
