@@ -19,13 +19,15 @@ angular.module('webAppApp')
          * @author 梦云智 http://www.mengyunzhi.com
          * @DateTime 2017-01-21T19:05:55+0800
          */
-        var getTeachers = function(name, page, pageSize, callback) {
+        var paginate = function(name, page, pageSize, callback) {
             var teachers = [];
-            console.log(name);
-            // 进行http请求
+
+            // 进行http POST请求.
+            // 由于是post请求方式，所以即便是我们在项目中存在paginate.json文件
+            // 但如果我们查看控制台，仍然会发现有错误产生，同时，没有正确的接收到数据
             $http({
                 method: 'POST',
-                url: 'http://localhost:8080/javaee/teacher/',
+                url: 'http://127.0.0.1:8080/javaee/teacher/',
                 data: {
                     name: name,
                     page: page,
@@ -35,6 +37,7 @@ angular.module('webAppApp')
                     contentType: 'application/json',
                 }
             }).then(function successCallback(response) {
+                console.log(response);
                 teachers = response.data.teachers;
 
                 // 网络发生错误 
@@ -56,8 +59,8 @@ angular.module('webAppApp')
         // Public API here
         return {
             // 获取全部教师信息
-            all: function(name, page, pageSize, callback) {
-                return getTeachers(name, page, pageSize, callback);
+            paginate: function(name, page, pageSize, callback) {
+                return paginate(name, page, pageSize, callback);
             },
         };
     });
