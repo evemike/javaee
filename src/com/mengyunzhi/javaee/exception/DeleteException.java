@@ -24,7 +24,7 @@ package com.mengyunzhi.javaee.exception;
  * DeleteException.
  */
 
-public class DeleteException extends StorageException {
+public class DeleteException extends Exception {
 
 	private static final long serialVersionUID = -5286362812955627352L;
 

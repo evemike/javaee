@@ -2,14 +2,9 @@ package com.mengyunzhi.javaee.action.teacher;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.struts2.interceptor.ServletResponseAware;
-
 import com.mengyunzhi.javaee.entity.Teacher;
-import com.opensymphony.xwork2.ActionSupport;
 
-public class Index extends ActionSupport implements ServletResponseAware{
+public class Index extends TeacherAction{
     /**
      * 定义serialVersionUID,增强兼容性
      */
@@ -62,23 +57,8 @@ public class Index extends ActionSupport implements ServletResponseAware{
     // 该execute方法将被自动调用， 方法的返回类型必须为String
     public String execute() {
         // 获取教师列表
-        // 未输入姓名，则查询所有信息
-        if (name.equals("")) {
-            teachers = Teacher.paginate(page, pageSize);
+        teachers = teacherServer.paginate(name, page, pageSize);
          
-            // 输入姓名，则进行模糊查询
-        } else {
-            teachers = Teacher.paginate(name, page, pageSize);
-        }
         return SUCCESS;
-    }
-
-    @Override
-    public void setServletResponse(HttpServletResponse response) {
-        // 设置发送文件头:允许跨域的地址
-        response.setHeader("Access-Control-Allow-Origin", "*");
-        response.setHeader("Access-Control-Allow-Credentials", "true");
-        response.setHeader("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
-        response.setHeader("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers");
     }
 }

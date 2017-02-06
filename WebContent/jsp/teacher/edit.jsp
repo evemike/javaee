@@ -9,17 +9,15 @@
 </head>
 <body>
 	<form action="update" method="post">
-		<input type="hidden" name="id"
-			value="<s:property value="teacher.id" />" /> 姓名：<input type="text"
-			name="name" value="<s:property value="teacher.name" />" /> <br />
-		用户名：<input type="text" name="username"
-			value="<s:property value="teacher.username" />"> <br /> 性别：<select
-			name="sex">
+		<input type="hidden" name="teacherId"
+			value="<s:property value="teacher.teacherId" />" />
+		<s:textfield label="姓名：" name="name" />
+		<br />
+		<s:textfield label="用户名：" name="username" />
+		<br /> 性别：<select name="sex">
 			<option value="0">男</option>
-			<option value="1" <s:if test="teacher.sex">selected</s:if>>女</option>
-		</select> <br /> 邮箱：<input type="text" name="email"
-			value="<s:property value="teacher.email" />" /><br /> 密码：<input
-			type="password" name="password" /><br />
+			<option value="1">女</option>
+		</select> <br /> <s:textfield label="邮箱：" name="email" /><br /> <s:textfield label="密码：" name="password" /><br />
 		<button type="submit">submit</button>
 	</form>
 </body>

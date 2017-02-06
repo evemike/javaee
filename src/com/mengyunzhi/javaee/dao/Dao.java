@@ -20,9 +20,7 @@
  */
 package com.mengyunzhi.javaee.dao;
 
-import com.mengyunzhi.javaee.application.Storage;
 import com.mengyunzhi.javaee.exception.CreateException;
-import com.mengyunzhi.javaee.exception.StorageException;
 import com.mengyunzhi.javaee.exception.UpdateException;
 import com.mengyunzhi.javaee.entity.IdEntity;
 
@@ -35,7 +33,7 @@ import java.util.Collection;
 
 public interface Dao {
 
-	Class getFeaturedClass();
+	Class<?> getFeaturedClass();
 
 	IdEntity get(Serializable id);
 
@@ -43,13 +41,9 @@ public interface Dao {
 
 	IdEntity update(IdEntity object) throws UpdateException;
 
-	Serializable merge(IdEntity object) throws StorageException;
-
 	int delete(Serializable id) throws CreateException;
 
 	int delete(IdEntity object) throws CreateException;
-	Collection paginate(String query, int page, int pageSize);
-	Collection findAll();
-
-    void setStorage(Storage storage);
+	Collection<?> paginate(int page, int pageSize);
+	Collection<?> all();
 }

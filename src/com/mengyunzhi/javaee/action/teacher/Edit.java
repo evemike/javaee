@@ -1,30 +1,39 @@
 package com.mengyunzhi.javaee.action.teacher;
 
-import com.mengyunzhi.javaee.entity.Teacher;;
+import com.mengyunzhi.javaee.server.TeacherServer;
 
-public class Edit {
-   
-    private int id; // 关健字
-    private Teacher teacher; // 教师实体
-    
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+public class Edit extends TeacherAction{
+      
+    public String getName() {
+        return teacher.getName();
     }
     
-    // teacher会被V层读取，但并可能由V层传入，所以，只需要get函数.
-    public Teacher getTeacher() {
-        return teacher;
+    public String getUsername() {
+        return teacher.getUsername();
     }
+    
+    public String getSex() {
+        return TeacherServer.getStringSexFromBoolean(teacher.getSex());
+    }
+    
+    public String getEmail() {
+        return teacher.getEmail();
+    }
+    
+    public String getPassword() {
+        return teacher.getPassword();
+    }
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
 
     // 该execute方法将被自动调用， 方法的返回类型必须为String
-    public String execute() {
+    public String execute() {       
         // 获取要编辑的教师
-        teacher = Teacher.getTeacherById(id);
-        System.out.println(teacher.toString());
+        teacher = TeacherServer.getTeacherById(id);
         return "success";
     }
+    
+    
 }

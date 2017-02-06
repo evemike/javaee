@@ -24,7 +24,7 @@ package com.mengyunzhi.javaee.exception;
  * CreateException.
  */
 
-public class CreateException extends StorageException {
+public class CreateException extends Exception {
 
 	private static final long serialVersionUID = 6734349565111633783L;
 

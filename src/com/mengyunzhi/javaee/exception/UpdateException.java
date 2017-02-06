@@ -25,7 +25,7 @@ package com.mengyunzhi.javaee.exception;
  * UpdateException.
  */
 
-public class UpdateException extends StorageException {
+public class UpdateException extends Exception {
 
 	private static final long serialVersionUID = -4728238600375630452L;
 
