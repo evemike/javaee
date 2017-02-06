@@ -1,10 +1,9 @@
 package com.mengyunzhi.javaee.action.teacher;
 
-import com.mengyunzhi.javaee.exception.CreateException;
 import com.mengyunzhi.javaee.server.TeacherServer;
 
 
-public class Delete extends TeacherAction {
+public class DeleteAction extends TeacherAction {
     
     /**
      * 
@@ -15,7 +14,7 @@ public class Delete extends TeacherAction {
     public String execute() {
         try {
             TeacherServer.deleteById(id);
-        } catch (CreateException e) {
+        } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
             addActionError(e.getMessage());

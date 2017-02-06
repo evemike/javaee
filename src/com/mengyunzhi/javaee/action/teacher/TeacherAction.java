@@ -75,9 +75,4 @@ public abstract class TeacherAction extends Action{
     public Teacher getTeacher() {
         return teacher;
     }
-    
-    @Override
-    public void prepare() throws Exception {
-
-    }
 }

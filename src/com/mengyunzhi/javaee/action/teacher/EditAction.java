@@ -2,7 +2,7 @@ package com.mengyunzhi.javaee.action.teacher;
 
 import com.mengyunzhi.javaee.server.TeacherServer;
 
-public class Edit extends TeacherAction{
+public class EditAction extends TeacherAction{
       
     public String getName() {
         return teacher.getName();

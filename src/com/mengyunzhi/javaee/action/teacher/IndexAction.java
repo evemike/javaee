@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.mengyunzhi.javaee.entity.Teacher;
 
-public class Index extends TeacherAction{
+public class IndexAction extends TeacherAction{
     /**
      * 定义serialVersionUID,增强兼容性
      */

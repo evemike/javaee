@@ -20,9 +20,6 @@
  */
 package com.mengyunzhi.javaee.dao;
 
-
-import com.mengyunzhi.javaee.exception.CreateException;
-import com.mengyunzhi.javaee.exception.UpdateException;
 import com.mengyunzhi.javaee.entity.IdEntity;
 
 import java.io.Serializable;
@@ -105,7 +102,7 @@ public abstract class AbstractDao implements Serializable, Dao {
         return object;
     }
 
-    public Serializable create(IdEntity object) throws CreateException {
+    public Serializable create(IdEntity object) {
         // 创建会话（这里的session也是会话的意思，我们以前接触的http中的session，处理的是用户与服务器的对话）
         Session session = getCurrentSession();
         // 开启事务（使用缓冲池进行数据库的连接）
@@ -144,7 +141,7 @@ public abstract class AbstractDao implements Serializable, Dao {
         return object.getId();
     }
 
-    public IdEntity update(IdEntity object) throws UpdateException {
+    public IdEntity update(IdEntity object) {
      // 创建会话（这里的session也是会话的意思，我们以前接触的http中的session，处理的是用户与服务器的对话）
         Session session = getCurrentSession();
         // 开启事务（使用缓冲池进行数据库的连接）
@@ -184,12 +181,12 @@ public abstract class AbstractDao implements Serializable, Dao {
         return object;
     }
     
-    public int delete(Serializable id) throws CreateException {
+    public int delete(Serializable id) {
         IdEntity idEntity = this.get(id);
         return this.delete(idEntity);
     }
 
-    public int delete(IdEntity object) throws CreateException {
+    public int delete(IdEntity object) {
         // 创建会话（这里的session也是会话的意思，我们以前接触的http中的session，处理的是用户与服务器的对话）
         Session session = getCurrentSession();
         // 开启事务（使用缓冲池进行数据库的连接）

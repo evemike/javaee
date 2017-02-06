@@ -13,5 +13,4 @@ public class TeacherDao extends AbstractDao {
     public Class<Teacher> getFeaturedClass() {
         return Teacher.class;
     }
-
 }

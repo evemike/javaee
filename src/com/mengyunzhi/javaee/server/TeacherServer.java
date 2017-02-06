@@ -5,8 +5,6 @@ import java.util.List;
 
 import com.mengyunzhi.javaee.dao.TeacherDao;
 import com.mengyunzhi.javaee.entity.Teacher;
-import com.mengyunzhi.javaee.exception.CreateException;
-import com.mengyunzhi.javaee.exception.UpdateException;
 
 public class TeacherServer {
     static private TeacherDao teacherDao = null;
@@ -41,7 +39,7 @@ public class TeacherServer {
      * @return
      * @throws CreateException
      */
-    static public Serializable create(String name, String username, String sex, String email, String password) throws CreateException {
+    static public Serializable create(String name, String username, String sex, String email, String password) {
         // 实例化教师实体，并赋值
         Teacher teacher = new Teacher();
         teacher = setTeacherAttr(teacher, name, username, sex, email, password);
@@ -83,7 +81,7 @@ public class TeacherServer {
      * @return
      * @throws UpdateException
      */
-    static public Teacher update(Long teacherId, String name, String sex, String email, String password) throws UpdateException {
+    static public Teacher update(Long teacherId, String name, String sex, String email, String password) {
         // 实例化教师实体，并赋值
         Teacher teacher = getTeacherById(teacherId); 
         teacher = setTeacherAttr(teacher, name, teacher.getUsername(), sex, email, password);
@@ -117,7 +115,7 @@ public class TeacherServer {
      * @return
      * @throws CreateException
      */
-    public static int deleteById(Long id) throws CreateException {
+    public static int deleteById(Long id) {
         Teacher teacher = getTeacherById(id);
         TeacherDao teacherDao = getCurrentTeacherDao();
         return teacherDao.delete(teacher);

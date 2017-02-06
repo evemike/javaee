@@ -4,7 +4,7 @@
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
 	<!-- 开发模式 - ture -->
-	<constant name="struts.devMode" value="false" />
+	<constant name="struts.devMode" value="true" />
 	<package name="default" namespace="/" extends="struts-default">
 		<!-- 指定默认action -->
 		<default-action-ref name="index" />
@@ -14,24 +14,26 @@
 		</action>
 	</package>
 	
+	<package name="api" namespace="/" extends="json-default">
+	
+	</package>
 	<!-- 继承自json-default. json-default是json插件为我们提供的 -->
 	<package name="teacher" namespace="/teacher" extends="json-default">
 		<!-- 指定默认action -->
 		<default-action-ref name="index" />
-	
-<!-- 		
-		<action name="index" class="com.mengyunzhi.javaee.action.teacher.Index">
-			返回类型设置为json
+			
+		<action name="indexJson" class="com.mengyunzhi.javaee.action.teacher.IndexAction">
+			<!-- 返回类型设置为json -->
 			<result name="success" type="json">
 			</result>
-			配置拦截器,使传入的json数据能够成功的通过setXXX()方法来传值
+			<!-- 配置拦截器,使传入的json数据能够成功的通过setXXX()方法来传值 -->
 			<interceptor-ref name="defaultStack" />
 			<interceptor-ref name="json">
 				<param name="enableSMD">true</param>
 			</interceptor-ref>
-		</action> -->
+		</action>
 		
-		<action name="index" class="com.mengyunzhi.javaee.action.teacher.Index">
+		<action name="index" class="com.mengyunzhi.javaee.action.teacher.IndexAction">
 			<result name="success">/jsp/teacher/index.jsp</result>
 		</action>
 
@@ -42,7 +44,7 @@
 		</action>
 
 		<!-- 保存数据 -->
-		<action name="save" class="com.mengyunzhi.javaee.action.teacher.Save">
+		<action name="save" class="com.mengyunzhi.javaee.action.teacher.SaveAction">
 			<!-- 设置V层，相对于WebContent的绝对路径 -->
 			<result name="success">/jsp/success.jsp</result>
 			<result name="error">/jsp/error.jsp</result>
@@ -50,22 +52,21 @@
 		</action>
 
 		<!-- 编辑数据 -->
-		<action name="edit" class="com.mengyunzhi.javaee.action.teacher.Edit">
+		<action name="edit" class="com.mengyunzhi.javaee.action.teacher.EditAction">
 			<result name="success">/jsp/teacher/edit.jsp</result>
 			<result name="error">/jsp/error.jsp</result>
 		</action>
 
 		<!-- 更新数据 -->
-		<action name="update" class="com.mengyunzhi.javaee.action.teacher.Update">
+		<action name="update" class="com.mengyunzhi.javaee.action.teacher.UpdateAction">
 			<result name="success">/jsp/success.jsp</result>
 			<result name="input">/jsp/teacher/edit.jsp</result>
 			<result name="error">/jsp/error.jsp</result>
 		</action>
 
 		<!-- 删除 -->
-		<action name="delete" class="com.mengyunzhi.javaee.action.teacher.Delete">
+		<action name="delete" class="com.mengyunzhi.javaee.action.teacher.DeleteAction">
 			<result name="success">/jsp/success.jsp</result>
-			
 			<result name="error">/jsp/error.jsp</result>
 		</action>
 	</package>
