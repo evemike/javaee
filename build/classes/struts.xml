@@ -3,8 +3,11 @@
 	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
+	<!--设置访问的后缀为json，或无后缀 -->
+	<constant name="struts.action.extension" value="json,," />
 	<!-- 开发模式 - ture -->
 	<constant name="struts.devMode" value="true" />
+	
 	<package name="default" namespace="/" extends="struts-default">
 		<!-- 指定默认action -->
 		<default-action-ref name="index" />
@@ -13,18 +16,15 @@
 			<result>/jsp/index.jsp</result>
 		</action>
 	</package>
-	
-	<package name="api" namespace="/" extends="json-default">
-	
-	</package>
-	<!-- 继承自json-default. json-default是json插件为我们提供的 -->
-	<package name="teacher" namespace="/teacher" extends="json-default">
-		<!-- 指定默认action -->
-		<default-action-ref name="index" />
-			
-		<action name="indexJson" class="com.mengyunzhi.javaee.action.teacher.IndexAction">
+
+	<package name="json" namespace="/" extends="json-default">
+		<!-- 使用通配符配置路由 -->
+		<action name="*_*" class="com.mengyunzhi.javaee.action.{1}Action"
+			method="{2}">
 			<!-- 返回类型设置为json -->
 			<result name="success" type="json">
+				<!-- 数据返回时，是否包括父类的get方法 -->
+				<param name="ignoreHierarchy">false</param>
 			</result>
 			<!-- 配置拦截器,使传入的json数据能够成功的通过setXXX()方法来传值 -->
 			<interceptor-ref name="defaultStack" />
@@ -32,7 +32,26 @@
 				<param name="enableSMD">true</param>
 			</interceptor-ref>
 		</action>
-		
+	</package>
+
+
+	<!-- 继承自json-default. json-default是json插件为我们提供的 -->
+	<package name="teacher" namespace="/teacher" extends="json-default">
+		<!-- 指定默认action -->
+		<default-action-ref name="index" />
+
+		<action name="indexJson" class="com.mengyunzhi.javaee.action.teacher.IndexAction">
+			<!-- 返回类型设置为json -->
+			<result name="success" type="json">
+				<param name="ignoreHierarchy">false</param>
+			</result>
+			<!-- 配置拦截器,使传入的json数据能够成功的通过setXXX()方法来传值 -->
+			<interceptor-ref name="defaultStack" />
+			<interceptor-ref name="json">
+				<param name="enableSMD">true</param>
+			</interceptor-ref>
+		</action>
+
 		<action name="index" class="com.mengyunzhi.javaee.action.teacher.IndexAction">
 			<result name="success">/jsp/teacher/index.jsp</result>
 		</action>
@@ -58,14 +77,16 @@
 		</action>
 
 		<!-- 更新数据 -->
-		<action name="update" class="com.mengyunzhi.javaee.action.teacher.UpdateAction">
+		<action name="update"
+			class="com.mengyunzhi.javaee.action.teacher.UpdateAction">
 			<result name="success">/jsp/success.jsp</result>
 			<result name="input">/jsp/teacher/edit.jsp</result>
 			<result name="error">/jsp/error.jsp</result>
 		</action>
 
 		<!-- 删除 -->
-		<action name="delete" class="com.mengyunzhi.javaee.action.teacher.DeleteAction">
+		<action name="delete"
+			class="com.mengyunzhi.javaee.action.teacher.DeleteAction">
 			<result name="success">/jsp/success.jsp</result>
 			<result name="error">/jsp/error.jsp</result>
 		</action>

@@ -1,6 +1,11 @@
 package com.mengyunzhi.javaee.action.teacher;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
 import com.mengyunzhi.javaee.entity.Teacher;
 
@@ -11,7 +16,7 @@ public class IndexAction extends TeacherAction{
     private static final long serialVersionUID = 1L;
 
     // 教师列表 类型为List，每项均为Teacher。
-    private List<Teacher> teachers;
+    private List<Teacher> teachers = new ArrayList<Teacher>();
     // 当前页
     private int page = 1;
     // 每页大小
@@ -57,8 +62,10 @@ public class IndexAction extends TeacherAction{
     // 该execute方法将被自动调用， 方法的返回类型必须为String
     public String execute() {
         // 获取教师列表
-        teachers = teacherServer.paginate(name, page, pageSize);
-         
+//        teachers = teacherServer.paginate(name, page, pageSize);
+        HttpSession session = this.request.getSession();
+        session.setAttribute("username", "hello");
+        this.name = (String) session.getAttribute("username");
         return SUCCESS;
     }
 }
