@@ -6,12 +6,13 @@ import org.apache.struts2.interceptor.ServletResponseAware;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-public abstract class Action extends ActionSupport implements ServletResponseAware {
-
+public abstract class Action extends ActionSupport implements ServletResponseAware{
     /**
      * 
      */
     private static final long serialVersionUID = 1L;
+    protected int code = 200; // 状态码.200正常
+    
     // 响应信息
     protected HttpServletResponse response;
 
@@ -19,7 +20,7 @@ public abstract class Action extends ActionSupport implements ServletResponseAwa
     public void setServletResponse(HttpServletResponse response) {
         // 设置发送文件头:允许跨域的地址
         response.setHeader("Access-Control-Allow-Origin", "*");
-        // 允许前端带cookie访问
+        // 允许前端带cookie访问（cookie跨域）
         response.setHeader("Access-Control-Allow-Credentials", "true");
         // 设置请允许的请求方法
         response.setHeader("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
@@ -29,4 +30,9 @@ public abstract class Action extends ActionSupport implements ServletResponseAwa
         response.setHeader("Access-Control-Max-Age", Integer.toString(3600 * 24));
         this.response = response;
     }
+
+    public int getCode() {
+        return this.code;
+    }
+    
 }

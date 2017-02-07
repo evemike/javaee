@@ -1,5 +1,6 @@
 package com.mengyunzhi.javaee.action.teacher;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.mengyunzhi.javaee.entity.Teacher;
@@ -11,7 +12,7 @@ public class IndexAction extends TeacherAction{
     private static final long serialVersionUID = 1L;
 
     // 教师列表 类型为List，每项均为Teacher。
-    private List<Teacher> teachers;
+    private List<Teacher> teachers = new ArrayList<Teacher>();
     // 当前页
     private int page = 1;
     // 每页大小
@@ -58,7 +59,6 @@ public class IndexAction extends TeacherAction{
     public String execute() {
         // 获取教师列表
         teachers = teacherServer.paginate(name, page, pageSize);
-         
         return SUCCESS;
     }
 }
