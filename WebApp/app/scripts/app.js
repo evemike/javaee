@@ -35,6 +35,11 @@ angular
         controller: 'TeacherIndexCtrl',
         controllerAs: 'teacher/Index'
       })
+      .when('/login', {
+        templateUrl: 'views/login.html',
+        controller: 'LoginCtrl',
+        controllerAs: 'login'
+      })
       .otherwise({
         redirectTo: '/'
       });
