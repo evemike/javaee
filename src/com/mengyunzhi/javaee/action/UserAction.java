@@ -5,13 +5,8 @@ public class UserAction extends Action{
     private static final long serialVersionUID = 1L;
     private String username = "";   // 用户名
     private String password = "";   // 密码
-    private int code = 200;         // 状态码.200正常
     private boolean isPassed = false; // 用户名密码是否正确
     
-    public int getCode() {
-        return code;
-    }
-
 
     public boolean getIsPassed() {
         return this.isPassed;
