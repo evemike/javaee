@@ -1,8 +1,6 @@
 package com.mengyunzhi.javaee.action;
 
-import com.opensymphony.xwork2.ActionSupport;
-
-public class UserAction extends ActionSupport{
+public class UserAction extends Action{
     // 继承ActionSupport后，必须生明serialVersionUID，该值为于对类及对象进行序列化与反序列化
     private static final long serialVersionUID = 1L;
     private String username = "";   // 用户名
