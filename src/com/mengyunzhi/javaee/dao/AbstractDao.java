@@ -283,7 +283,7 @@ public abstract class AbstractDao implements Serializable, Dao {
             String hql = "from " + getFeaturedClass().getSimpleName();
             // 预查询，只有在事务提交时，才进行查询操作
             entities = (ArrayList<IdEntity>) session.createQuery(hql)
-                    .setFirstResult(page)
+                    .setFirstResult((page - 1) * pageSize)
                     .setMaxResults(pageSize)
                     .list();
             

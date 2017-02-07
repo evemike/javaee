@@ -8,35 +8,27 @@
  * Service in the webAppApp.
  */
 angular.module('webAppApp')
-    .service('user', function($http) {
+    .service('user', function(server) {
+        /**
+         * 用户登陆
+         * @param    {string}                 username 用户名
+         * @param    {string}                 password 密码
+         * @param    {Function}               callback 回调函数
+         * @return   {}                          
+         * @author 梦云智 http://www.mengyunzhi.com
+         * @DateTime 2017-02-07T18:34:55+0800
+         */
         var login = function(username, password, callback) {
-            var data = {};
-            $http({
-                    method: 'POST',
-                    url: 'http://127.0.0.1:8080/javaee/User_login',
-                    data: {
-                        username: username,
-                        password: password
-                    },
-                    header: {
-                        contentType: 'application/json',
-                    }
-                }).then(function successCallback(response) {
-                    console.log(response);
-                    data = response.data;
-
-                    // 网络发生错误 
-                }, function errorCallback(response) {
-                    console.log('error callback');
-                    console.log(response);
-                }).
-                // 发生异常
-            catch(function(e) {
-                console.log('Error: ', e);
-                throw e;
-            }).finally(function() {
-                // 调用回调函数, 返回教师数组
-                callback(data.isPassed);
+            server.http({
+                method: 'POST',
+                url: '/User_login',
+                data: {
+                    username: username,
+                    password: password
+                }
+            }, function(response) {
+                // 将是否通过验证传给V层
+                callback(response.isPassed);
             });
         };
 
