@@ -16,12 +16,13 @@ public class IndexAction extends TeacherAction{
     // 当前页
     private int page = 1;
     // 每页大小
-    private int pageSize = 2;
+    private int pageSize = 3;
     // 查询姓名
     private String name = "";
     
     // 显示接收到的page信息
     public int getPage() {
+        
         return page;
     }
 
