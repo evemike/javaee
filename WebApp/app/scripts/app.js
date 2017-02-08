@@ -40,6 +40,11 @@ angular
         controller: 'LoginCtrl',
         controllerAs: 'login'
       })
+      .when('/klass/index', {
+        templateUrl: 'views/klass/index.html',
+        controller: 'KlassIndexCtrl',
+        controllerAs: 'klass/index'
+      })
       .otherwise({
         redirectTo: '/'
       });

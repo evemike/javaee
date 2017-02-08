@@ -8,12 +8,13 @@
  * Controller of the webAppApp
  */
 angular.module('webAppApp')
-    .controller('TeacherIndexCtrl', function($scope, teacher) {
+    .controller('TeacherIndexCtrl', function($scope, teacher, config) {
         // 教师列表
         $scope.teachers = [];
         $scope.name = '';
         $scope.page = 1;
         $scope.pageSize = 2;
+        $scope.isDebug = config.isDebug;
 
         /**
          * 查询

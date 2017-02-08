@@ -8,7 +8,7 @@
  * Service in the webAppApp.
  */
 angular.module('webAppApp')
-    .service('server', function($http) {
+    .service('server', function($http, config) {
         var http = function(param, callback) {
             var data = {};
             // 设置请求的header
@@ -16,7 +16,7 @@ angular.module('webAppApp')
                 contentType: 'application/json',
             };
             // 统一处理URL
-            param.url = 'http://127.0.0.1:8080/javaee' + param.url;
+            param.url = config.apiRootPath + param.url;
 
             $http(param).then(function successCallback(response) {
                     console.log(response);

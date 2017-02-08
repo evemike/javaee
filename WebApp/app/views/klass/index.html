@@ -8,26 +8,21 @@
 <table class="table">
     <tr>
         <th>序号</th>
-        <th>姓名</th>
-        <th>用户名</th>
-        <th>性别</th>
-        <th>邮箱</th>
+        <th>班级名称</th>
+        <th>辅导员</th>
+        <th>操作</th>
     </tr>
-    <tr ng-repeat="(index, teacher) in teachers">
+    <tr ng-repeat="(index, klass) in klasses">
         <td>{{$index + 1}}</td>
-        <td>{{teacher.name}}</td>
-        <td>{{teacher.username}}</td>
-        <td>{{teacher.sex | sexFilter}}</td>
-        <td>{{teacher.email}}</td>
+        <td>{{klass.name}}</td>
+        <td>{{klass.teacher.name}}</td>
+        <td></td>
     </tr>
 </table>
 <nav class="text-center">
     <ul class="pagination">
-        <li class="{{activeClass(1)}}">
-            <a ng-click="changePage(1)" href="javascript:void(0);">1</a>
-        </li>
-        <li class="{{activeClass(2)}}">
-            <a ng-click="changePage(2)" href="javascript:void(0);">2</a>
+        <li ng-repeat="page in [] | paginationFilter:pageSize:totalCount" class="{{activeClass(page)}}">
+            <a ng-click="changePage(page)" href="javascript:void(0);">{{page}}</a>
         </li>
     </ul>
 </nav>
@@ -35,5 +30,6 @@
     {{name}}
     <br /> {{page}}
     <br /> {{pageSize}}
-    <br /> {{teachers}}
+    <br /> {{klasses}}
 </div>
+
