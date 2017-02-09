@@ -36,11 +36,26 @@ angular.module('webAppApp')
             });
         };
 
+        // 新增数据
+        var save = function(name, teacherId, callback) {
+            server.http({
+                method: 'POST',
+                url: '/klass.Save.json',
+                data : {
+                    name: name,
+                    teacherId: teacherId
+                }
+            }, function(response) {
+                callback(response);
+            });
+        };
+        
         // Public API here
         return {
             // 获取全部教师信息
             paginate: function(name, page, pageSize, callback) {
                 return paginate(name, page, pageSize, callback);
             },
+            save: save
         };
     });

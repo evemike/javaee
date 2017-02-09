@@ -19,7 +19,11 @@ angular.module('webAppApp')
             param.url = config.apiRootPath + param.url;
 
             $http(param).then(function successCallback(response) {
-                    console.log(response);
+                    // 开发者模式下，打印资源请求结果
+                    if (config.isDebug === true) {
+                        console.log(response);
+                    }
+                    
                     data = response.data;
 
                     // 网络发生错误 

@@ -9,7 +9,8 @@ describe('Service: klass', function() {
     var klass, $httpBackend, config;
     beforeEach(inject(function(_klass_, _$httpBackend_, _config_) {
         klass = _klass_;
-        config = _config_; // 引用项目配置
+        config = _config_;      // 引用项目配置
+        config.isDebug = false; // 关闭开发模式
         $httpBackend = _$httpBackend_;
 
         // 定义请求 URL
@@ -20,11 +21,26 @@ describe('Service: klass', function() {
         // 进行模似数据请求配置.当请求方法为post，资源名为url时, 返回data数据.
         $httpBackend.when('POST', url).respond(data);
 
+        // 定义请求 URL
+        url = config.apiRootPath + '/klass.Save.json';
+        // 定义返回数据, 仅定义正确的返回码。
+
+        // 进行模似数据请求配置.当请求方法为post，资源名为url时, 返回data数据.
+        $httpBackend.when('POST', url).respond(data);
+
     }));
 
     it('检测语法是否出现错误', function() {
         // 调用方法
-        klass.paginate('', 1, 2, function() {});
+        klass.paginate('', 1, 2, function() {
+            console.log('klass paginate passed');
+        });
+
+        // 调用保存
+        klass.save('name', 3, function(){
+            console.log('klass save 通过');
+        });
+
         // 模拟数据请求
         $httpBackend.flush();
     });
