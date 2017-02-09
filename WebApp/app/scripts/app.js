@@ -45,6 +45,11 @@ angular
         controller: 'KlassIndexCtrl',
         controllerAs: 'klass/index'
       })
+      .when('/klass/add', {
+        templateUrl: 'views/klass/add.html',
+        controller: 'KlassAddCtrl',
+        controllerAs: 'klass/add'
+      })
       .otherwise({
         redirectTo: '/'
       });

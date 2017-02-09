@@ -39,11 +39,25 @@ angular.module('webAppApp')
             });
         };
 
+        // 获取所有的教师列表
+        var all = function(callback) {
+            var teachers = [];
+             server.http({
+                method: 'GET',
+                url: '/Teacher_all.json',
+            }, function(response) {
+                teachers = response.teachers;
+                callback(teachers);
+            });
+        };
+
         // Public API here
         return {
             // 获取全部教师信息
             paginate: function(name, page, pageSize, callback) {
                 return paginate(name, page, pageSize, callback);
             },
+            all: all,
+
         };
     });
