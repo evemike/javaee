@@ -7,7 +7,7 @@
 	<constant name="struts.action.extension" value="json,," />
 	<!-- 开发模式 - ture -->
 	<constant name="struts.devMode" value="true" />
-	
+
 	<package name="default" namespace="/" extends="struts-default">
 		<!-- 指定默认action -->
 		<default-action-ref name="index" />
@@ -26,6 +26,10 @@
 				<!-- 数据返回时，是否包括父类的get方法 -->
 				<param name="ignoreHierarchy">false</param>
 			</result>
+			<result name="input" type="json">
+				<!-- 数据返回时，是否包括父类的get方法 -->
+				<param name="ignoreHierarchy">false</param>
+			</result>
 			<!-- 配置拦截器,使传入的json数据能够成功的通过setXXX()方法来传值 -->
 			<interceptor-ref name="defaultStack" />
 			<interceptor-ref name="json">
@@ -33,7 +37,6 @@
 			</interceptor-ref>
 		</action>
 	</package>
-
 
 	<!-- 继承自json-default. json-default是json插件为我们提供的 -->
 	<package name="teacher" namespace="/teacher" extends="json-default">
