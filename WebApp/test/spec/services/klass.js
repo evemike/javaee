@@ -32,6 +32,10 @@ describe('Service: klass', function() {
         url = config.apiRootPath + '/klass.Get.json?id=1';
         $httpBackend.when('GET', url).respond(data);
 
+        // 增加update测试
+        url = config.apiRootPath + '/klass.Update.json';
+        $httpBackend.when('POST', url).respond(data);
+
     }));
 
     it('检测语法是否出现错误', function() {
@@ -48,6 +52,11 @@ describe('Service: klass', function() {
         // 调用GET
         klass.get(1, function(){
             console.log('klass get 通过');
+        });
+
+        // 调用UPDATE
+        klass.update({}, function(){
+            console.log('klass update 通过');
         });
         // 模拟数据请求
         $httpBackend.flush();

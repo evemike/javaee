@@ -23,7 +23,19 @@ angular.module('webAppApp')
 
         // 数据提交
         var submit = function() {
-            console.log('submit');
+            klass.update($scope.klass, function(response){
+                if (!angular.equals({}, response.errors)) {
+                    // 发生错误
+                    $scope.errors = response.errors;
+                    $scope.isError = true;              // 发生错误
+                    $scope.message = '';                // 清空消息
+                    
+                } else {
+                    // 添加成功
+                    $scope.message = '更新成功';
+                    $scope.isError = false;
+                }
+            });
         };
 
         // 获取当前班级信息

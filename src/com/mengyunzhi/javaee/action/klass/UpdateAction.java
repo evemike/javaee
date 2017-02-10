@@ -9,7 +9,9 @@ public class UpdateAction extends Action {
 
     private static final long serialVersionUID = 1L;
     private Long id;
-
+    private String name;
+    private Long teacherId;
+    
     public Long getId() {
         return id;
     }
@@ -21,8 +23,7 @@ public class UpdateAction extends Action {
             this.addFieldError("id", "传入的班级ID不存在或已删除");
         }
     }
-    private String name;
-    private Long teacherId;
+
 
     public String getName() {
         return name;

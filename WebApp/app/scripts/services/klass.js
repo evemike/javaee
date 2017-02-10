@@ -57,6 +57,17 @@ angular.module('webAppApp')
             });
         };
 
+        // 更新
+        var update = function (klass, callback) {
+            server.http({
+                method:'POST',
+                url: '/klass.Update.json',
+                data: klass
+            }, function(response) {
+                callback(response);
+            });
+        };
+
         // Public API here
         return {
             // 获取全部教师信息
@@ -64,6 +75,7 @@ angular.module('webAppApp')
                 return paginate(name, page, pageSize, callback);
             },
             save: save,
-            get: get
+            get: get,
+            update: update
         };
     });
