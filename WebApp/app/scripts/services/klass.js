@@ -68,6 +68,16 @@ angular.module('webAppApp')
             });
         };
 
+        // 删除
+        var del = function (id, callback) {
+            server.http({
+                method:'GET',
+                url: '/klass.Delete.json?id=' + id,
+            }, function(response) {
+                callback(response);
+            });
+        };
+
         // Public API here
         return {
             // 获取全部教师信息
@@ -76,6 +86,7 @@ angular.module('webAppApp')
             },
             save: save,
             get: get,
-            update: update
+            update: update,
+            del: del
         };
     });

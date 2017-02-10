@@ -36,6 +36,9 @@ describe('Service: klass', function() {
         url = config.apiRootPath + '/klass.Update.json';
         $httpBackend.when('POST', url).respond(data);
 
+        // 增加destroy
+        url = config.apiRootPath + '/klass.Delete.json?id=1';
+        $httpBackend.when('GET', url).respond(data);
     }));
 
     it('检测语法是否出现错误', function() {
@@ -58,6 +61,12 @@ describe('Service: klass', function() {
         klass.update({}, function(){
             console.log('klass update 通过');
         });
+
+        // 调用DESTROY
+        klass.destroy(1, function(){
+            console.log('klass destroy 通过');
+        });
+
         // 模拟数据请求
         $httpBackend.flush();
     });

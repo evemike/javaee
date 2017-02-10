@@ -1,4 +1,10 @@
 <div class="row">
+    <div class="col-md-12">
+        <div ng-show="message" class="alert alert-success" role="alert">{{message}}</div>
+        <div ng-show="isError" class="alert alert-danger" role="alert">{{errors}}</div>
+    </div>
+</div>
+<div class="row">
     <div class="col-md-12 text-right">
         <a class="btn btn-default" ng-href="#!/klass/add">添加</a>
     </div>
@@ -21,7 +27,7 @@
         <td>{{$index + 1}}</td>
         <td>{{klass.name}}</td>
         <td>{{klass.teacher.name}}</td>
-        <td><a ng-href="#!/klass/edit/{{klass.id}}">编辑</a></td>
+        <td><a ng-href="#!/klass/edit/{{klass.id}}">编辑</a> <button ng-click="del($index, klass)">删除</button></td>
     </tr>
 </table>
 <nav class="text-center">
