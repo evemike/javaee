@@ -28,6 +28,10 @@ describe('Service: klass', function() {
         // 进行模似数据请求配置.当请求方法为post，资源名为url时, 返回data数据.
         $httpBackend.when('POST', url).respond(data);
 
+        // 增加GET的测试
+        url = config.apiRootPath + '/klass.Get.json?id=1';
+        $httpBackend.when('GET', url).respond(data);
+
     }));
 
     it('检测语法是否出现错误', function() {
@@ -41,6 +45,10 @@ describe('Service: klass', function() {
             console.log('klass save 通过');
         });
 
+        // 调用GET
+        klass.get(1, function(){
+            console.log('klass get 通过');
+        });
         // 模拟数据请求
         $httpBackend.flush();
     });

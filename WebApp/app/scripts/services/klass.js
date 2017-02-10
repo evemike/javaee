@@ -47,12 +47,23 @@ angular.module('webAppApp')
             });
         };
         
+        // 获取单条数据
+        var get = function(id, callback) {
+            server.http({
+                method:'GET',
+                url: '/klass.Get.json?id=' + id
+            }, function(response) {
+                callback(response);
+            });
+        };
+
         // Public API here
         return {
             // 获取全部教师信息
             paginate: function(name, page, pageSize, callback) {
                 return paginate(name, page, pageSize, callback);
             },
-            save: save
+            save: save,
+            get: get
         };
     });

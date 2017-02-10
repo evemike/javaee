@@ -8,7 +8,7 @@
  * Controller of the webAppApp
  */
 angular.module('webAppApp')
-    .controller('KlassEditCtrl', function($scope, config, teacher,  $routeParams) {
+    .controller('KlassEditCtrl', function($scope, config, teacher,  $routeParams, klass) {
         $scope.klass = {};
         // 教师列表
         $scope.teachers = [];
@@ -28,7 +28,9 @@ angular.module('webAppApp')
 
         // 获取当前班级信息
         var getKlass = function() {
-            console.log('getKlass:' + $scope.klass.id);
+            klass.get($scope.klass.id, function(response) {
+                $scope.klass = response.klass;
+            });
         };
 
         // 获取教师列表
