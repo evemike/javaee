@@ -37,7 +37,7 @@ describe('Service: klass', function() {
         });
 
         // 调用保存
-        klass.save('name', 3, function(){
+        klass.save({name:'name', teacherId:3}, function(){
             console.log('klass save 通过');
         });
 

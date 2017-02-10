@@ -8,21 +8,18 @@
     <div class="col-md-12">
         <form ng-submit="submit()">
             <label>名称:
-                <input type="text" ng-model="name">
+                <input type="text" ng-model="klass.name">
             </label>
             <label>辅导员:
-                <select ng-model="teacher">
-                    <option ng-repeat="teacher in teachers" ng-value="teacher.id">{{teacher.name}}</option>
+                <select ng-model="klass.teacherId">
+                    <option ng-repeat="_teacher in teachers" ng-value="_teacher.id">{{_teacher.name}}</option>
                 </select>
                 <button type="submit">submit</button>
         </form>
     </div>
 </div>
 <div class="debug" ng-show="isDebug">
-    {{name}}
+    {{klass}}
     <br />
     {{teachers}}
-    <br />
-    {{teacher}}
-
 </div>

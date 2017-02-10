@@ -9,11 +9,9 @@
  */
 angular.module('webAppApp')
     .controller('KlassAddCtrl', function($scope, config, teacher, klass) {
-        $scope.name = '';       // 名称
+        $scope.klass = {name:'', teacherId:0};       // 教师
         // 教师列表
         $scope.teachers = [];
-        // 选中的教师
-        $scope.teacher = 0;
         $scope.isDebug = config.isDebug;
         $scope.isError = false; // 是否发生错误
         $scope.errors = {};     // 错误信息
@@ -21,7 +19,7 @@ angular.module('webAppApp')
 
         // 数据提交
         var submit = function() {
-            klass.save($scope.name, $scope.teacher, function(response){
+            klass.save($scope.klass, function(response){
                 if (!angular.equals({}, response.errors)) {
                     // 发生错误
                     $scope.errors = response.errors;
@@ -40,7 +38,7 @@ angular.module('webAppApp')
         var getTeachers = function() {
             teacher.all(function(response){
                 $scope.teachers = response;             // 获取到的所有教师
-                $scope.teacher = $scope.teachers[0].id; // 初始化选中的教师
+                $scope.klass.teacherId = $scope.teachers[0].id;    // 初始化选中的教师
             });
         };
 
@@ -51,5 +49,6 @@ angular.module('webAppApp')
 
         int();
         $scope.submit = submit;
+        this.scope = $scope;
 
     });

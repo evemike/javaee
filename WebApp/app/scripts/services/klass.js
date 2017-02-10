@@ -37,14 +37,11 @@ angular.module('webAppApp')
         };
 
         // 新增数据
-        var save = function(name, teacherId, callback) {
+        var save = function(teacher, callback) {
             server.http({
                 method: 'POST',
                 url: '/klass.Save.json',
-                data : {
-                    name: name,
-                    teacherId: teacherId
-                }
+                data : teacher
             }, function(response) {
                 callback(response);
             });
