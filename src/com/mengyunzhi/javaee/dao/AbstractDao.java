@@ -48,7 +48,7 @@ public abstract class AbstractDao implements Serializable, Dao {
     private static final long serialVersionUID = 1L;
     private static SessionFactory sessionFactory;
     
-    protected static Session getCurrentSession() {
+    public static Session getCurrentSession() {
         // 每个数据库只需要一个sessionFactory，在这里进行单一实例处理。
         if (null == sessionFactory) {
             // 实例化并加载数据库配置文件

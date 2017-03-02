@@ -30,6 +30,7 @@
 		<property name="show_sql">true</property>
 		<!-- 加载entity.Teacher实体类映射文件 -->
 		<mapping class="com.mengyunzhi.javaee.entity.Teacher" />
+		<mapping class="com.mengyunzhi.javaee.entity.Klass" />
 	</session-factory>
 
 </hibernate-configuration>
