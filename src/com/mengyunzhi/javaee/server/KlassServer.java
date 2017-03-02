@@ -20,10 +20,35 @@ public class KlassServer {
 	 * @param teacherId 关键字
 	 * @return Klass
 	 */
-	public static Klass getKlassById(Long teacherId) {
+	public static Klass getKlassById(Long id) {
 	    KlassDao klassDao = new KlassDao();
-	    Klass klass = (Klass) klassDao.get(teacherId);
+	    Klass klass = (Klass) klassDao.get(id);
 	    return klass;
+	}
+	
+	/**
+	 * 更新klass
+	 * @param id
+	 * @param name
+	 * @param teacherId
+	 */
+	public static void updateKlassByIdNameTeacherId(Long id, String name, Long teacherId) {
+	    KlassDao klassDao = new KlassDao();
+	    Klass klass = (Klass)klassDao.get(id);
+	    klass.setName(name);
+	    klass.setTeacherId(teacherId);
+	    klassDao.update(klass);
+	    return;
+	}
+	
+	/**
+	 * 删除
+	 * @param id
+	 */
+	public static void deleteKlassById(Long id) {
+	    KlassDao klassDao = new KlassDao();
+	    klassDao.delete(id);
+	    return;
 	}
 
 }

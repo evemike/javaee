@@ -1,26 +1,24 @@
 package com.mengyunzhi.javaee.action.klass;
 
 import com.mengyunzhi.javaee.action.Action;
-import com.opensymphony.xwork2.validator.annotations.RequiredFieldValidator;
+import com.mengyunzhi.javaee.server.KlassServer;
 
-public class DeleteAction extends Action{
+public class DeleteAction extends Action {
+
     private static final long serialVersionUID = 1L;
-    private Long id;
+    private long id;
 
-    public Long getId() {
+	public long getId() {
         return id;
     }
-    
-    @RequiredFieldValidator(message = "必须传入ID")
-    public void setId(Long id) {
-        if (id == 100L) {
-            this.addActionError("尚有学生位于该班级中，删除失败");
-        }
+
+    public void setId(long id) {
         this.id = id;
     }
-    
+
     public String execute() {
-        return SUCCESS;
-    }
-    
+		KlassServer.deleteKlassById(id);
+		return SUCCESS;
+	}
+
 }

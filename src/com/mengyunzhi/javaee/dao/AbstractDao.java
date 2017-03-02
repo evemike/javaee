@@ -191,7 +191,7 @@ public abstract class AbstractDao implements Serializable, Dao {
         Session session = getCurrentSession();
         // 开启事务（使用缓冲池进行数据库的连接）
         Transaction transaction = session.beginTransaction();
-
+        
         // 在这里，必须使用try catch finally语句。来确定会话正常关闭.
         // 否则，当操作数据库产生错误时，你可能需要重启mysql服务
         try {
