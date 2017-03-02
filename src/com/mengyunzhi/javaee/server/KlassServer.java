@@ -14,5 +14,16 @@ public class KlassServer {
 	    klassDao.create(klass);
 	    return;
 	}
+	
+	/**
+	 * 获取klass实体
+	 * @param teacherId 关键字
+	 * @return Klass
+	 */
+	public static Klass getKlassById(Long teacherId) {
+	    KlassDao klassDao = new KlassDao();
+	    Klass klass = (Klass) klassDao.get(teacherId);
+	    return klass;
+	}
 
 }

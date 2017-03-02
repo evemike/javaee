@@ -94,4 +94,10 @@ public class Klass implements IdEntity {
 	    this.setKlassId((Long) id); 
 	}
 
+    @Override
+    public String toString() {
+        return "Klass [klassId=" + klassId + ", name=" + name + ", teacher="
+                + teacher + "]";
+    }
+
 }
